@@ -15,6 +15,7 @@ import javax.validation.Valid;
 /**
  *
  * @author cristina
+ * JPA Controller class
  */
 public class ProductManager {
     private EntityManager em;

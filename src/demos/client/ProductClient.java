@@ -6,7 +6,6 @@ package demos.client;
 
 import demos.db.Product;
 import demos.model.ProductManager;
-import demos.model.ProductManagerEJB;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
@@ -28,29 +27,28 @@ public class ProductClient {
      */
     public static void main(String[] args) {
         try {
-            //Lesson 3: JPA
-            //ProductManager pm = new ProductManager("ProductClientPU");
+            //Lesson 3: Testing JPA
+            ProductManager pm = new ProductManager("ProductClientPU");
             //Lesson 4: EJB
-            ProductManagerEJB pme = new ProductManagerEJB();
+            //ProductManagerEJB pme = new ProductManagerEJB();
             
             //Pag 66. Punto 1
-            Product p = pme.findProduct(1);
-            System.out.println(pme);
+            //Product p = pme.findProduct(1);
+            //System.out.println(p);
             
             
             //Pag 47. Punto 4
-            //Product p = pm.findProduct(1);
-            //System.out.println(p);
+            Product p1 = pm.findProduct(1);
+            System.out.println(p1);
             
             //Pag 47. Punto 6
-            //List<Product> products = pm.findProductByName("Co%");
-            //products.stream().forEach(p->System.out.println(p));
+            List<Product> products = pm.findProductByName("Co%");
+            products.stream().forEach(p->System.out.println(p));
             
             //Pag 48. Punto 9
-            //Product p = pm.findProduct(1);
-            //p.setPrice(BigDecimal.valueOf(2.5));
-            //p.setBestBefore(LocalDate.now().plusDays(1));
-            //pm.update(p);
+            p1.setPrice(BigDecimal.valueOf(2.5));
+            p1.setBestBefore(LocalDate.now().plusDays(1));
+            pm.update(p1);
             
             //Pag 49. Punto 10 - PROBAR
             //p.setPrice(BigDecimal.valueOf(0.1));
