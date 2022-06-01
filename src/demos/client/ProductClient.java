@@ -29,43 +29,35 @@ public class ProductClient {
         try {
             //Lesson 3: Testing JPA
             ProductManager pm = new ProductManager("ProductClientPU");
-            //Lesson 4: EJB
-            //ProductManagerEJB pme = new ProductManagerEJB();
-            
-            //Pag 66. Punto 1
-            //Product p = pme.findProduct(1);
-            //System.out.println(p);
-            
-            
+
             //Pag 47. Punto 4
             Product p1 = pm.findProduct(1);
             System.out.println(p1);
-            
+
             //Pag 47. Punto 6
             List<Product> products = pm.findProductByName("Co%");
-            products.stream().forEach(p->System.out.println(p));
-            
+            products.stream().forEach(p -> System.out.println(p));
+
             //Pag 48. Punto 9
             p1.setPrice(BigDecimal.valueOf(2.5));
             p1.setBestBefore(LocalDate.now().plusDays(1));
             pm.update(p1);
-            
-            //Pag 49. Punto 10 - PROBAR
-            //p.setPrice(BigDecimal.valueOf(0.1));
-            //p.setName("x");
-            //p.setBestBefore(LocalDate.now().plusDays(1));
-            //pm.update(p);
-            
+
+            //Pag 49. Punto 10 - Validacaciones. En el classpath debe estar marcado
+            // el mode como: CALLBACK
+            p1.setPrice(BigDecimal.valueOf(0.1));
+            p1.setName("x");
+            p1.setBestBefore(LocalDate.now().plusDays(1));
+            pm.update(p1);
+
             //Pag 49. Punto 11
             //p.setPrice(BigDecimal.valueOf(5));
             //Scanner s = new Scanner(System.in);
             //System.out.println("Click here and then press enter to contine");
             //s.nextLine();
             //pm.update(p);
-            
             //Sólo para la parte de JPA
             //pm.closeEntityManager();
-
         } catch (Exception ex) {
             Throwable cause = ex.getCause();
             if (cause instanceof ConstraintViolationException) {
